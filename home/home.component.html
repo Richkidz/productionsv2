@@ -1,0 +1,285 @@
+<app-nav type="is-dark"></app-nav>
+
+<div class="notification has-text-centered" style="margin-bottom: 0; background: #c8d9f3;">
+  <p><strong>Information</strong> - We're moving to <a class="has-text-weight-bold has-text-info" style="text-decoration: none;" href="https://campfirehq.net">campfirehq.net</a> soon.</p>
+</div>
+
+<div class="hero is-dark cf-fire-bg is-fullheight-with-navbar " *ngIf="!user">
+  <div class="hero-body">
+    <div class="container animated fadeInUp">
+      <div class="columns">
+        <div class="column is-7">
+          <h1 class="title is-size-1 is-size-1-touch" style="word-break: keep-all;">We're Campfire</h1>
+          <p class="subtitle">The all-in-one Discord bot dedicated to social features, economy and moderation. Nice to
+            meet you!</p>
+          <a href="https://campfirebot.xyz/links/invite" class="button is-rounded is-light is-outlined"
+            style="margin-right: 5px;">
+            <i class="fas fa-paper-plane" style="margin-right: 5px;"></i>Invite Campfire</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero is-dark cf-fire-bg is-fullheight-with-navbar" *ngIf="user">
+  <div class="hero-body">
+    <div class="container animated fadeInUp">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title is-size-1 is-size-1-touch">Hey {{ user.displayName }}!</h1>
+          <p class="subtitle">I hope you're having a nice day! Thanks for dropping by.</p>
+          <div class="buttons">
+            <a href="https://campfirebot.xyz/links/invite" class="button is-rounded is-light is-outlined"
+              style="margin-right: 5px;">
+              <i class="fas fa-paper-plane" style="margin-right: 5px;"></i>Invite Campfire</a>
+
+            <a routerLink="/dashboard" class="button is-rounded is-light is-outlined" style="margin-right: 5px;">
+              <i class="fas fa-chart-line" style="margin-right: 5px;"></i>Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero is-dark is-medium" [class.is-hidden]="!user">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-2 is-size-2-touch">Help out Campfire</h1>
+      <h1 class="subtitle is-size-5 is-size-5-touch has-text-weight-bold">Your donations to Campfire go towards server costs, domain costs and general running costs
+      </h1>
+
+      <br>
+      <h1 class="title is-size-3 is-size-3-touch">$2.50<span class="is-size-5">/month <small>when billed annually</small></span></h1>
+      <hr style="background-color: #b51d1d">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title is-size-4 is-size-4-touch">50 Daily Tickets</h1>
+          <h1 class="subtitle is-size-6 is-size-6-touch">That's 40 more than usual!</h1>
+        </div>
+
+        <div class="column">
+          <h1 class="title is-size-4 is-size-4-touch">No cooldowns</h1>
+          <h1 class="subtitle is-size-6 is-size-6-touch">Use commands rapid fast</h1>
+        </div>
+
+        <div class="column">
+          <h1 class="title is-size-4 is-size-4-touch">PRO Badge</h1>
+          <h1 class="subtitle is-size-6 is-size-6-touch">Rep your support</h1>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <h1 class="title is-size-4 is-size-4-touch">PRO Role</h1>
+          <h1 class="subtitle is-size-6 is-size-6-touch">Available in our server, Campfire HQ</h1>
+        </div>
+
+        <div class="column">
+          <h1 class="title is-size-4 is-size-4-touch">Priority Support</h1>
+          <h1 class="subtitle is-size-6 is-size-6-touch">Get priority over other customers</h1>
+        </div>
+
+        <div class="column">
+          <h1 class="title is-size-4 is-size-4-touch">Early access</h1>
+          <h1 class="subtitle is-size-6 is-size-6-touch">Get access to features before other customers</h1>
+        </div>
+      </div>
+
+      <hr style="background-color: #b51d1d">
+
+      <div class="buttons">
+        <a class="button is-danger is-fullwidth" (click)="annualBill()">Buy for $2.50/month anually</a>
+        <a class="button is-danger is-fullwidth" (click)="monthlyBill()">Buy for $3.00/month monthly</a>
+        <a href="https://paypal.me/campfirebot" class="button is-outlined is-danger is-small is-fullwidth">Pay via PayPal</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero is-dark is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-2 is-size-2-touch">Why Campfire?</h1>
+      <h1 class="subtitle is-size-5 is-size-5-touch">Here's why you should be using Campfire</h1>
+      <div class="spacer"></div>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <h1 class="title is-size-4 is-size-4-touch has-text-warning-inverted">
+              Community
+            </h1>
+            <div class="content">
+              <p>
+                We'll bring features to your guild that encourages people to use it.
+                For example, our best-in-class tickets system.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="box">
+            <h1 class="title is-size-4 has-text-warning-inverted">
+              Fun
+            </h1>
+            <p>
+              We'll bring heaps of fun, social features for you and your community to play about with.
+              Our favourite is the magic 8ball.
+            </p>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="box">
+            <h1 class="title is-size-4 is-size-4-touch has-text-warning-inverted">
+              Moderator
+            </h1>
+            <p>We'll keep your guild safe with fancy moderation
+              features that are fully customisable and work to keep you in control <small>- Coming soon</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero is-dark is-small">
+  <div class="hero-body">
+    <div class="container">
+      <br>
+      <h1 class="title is-size-3 is-size-3-touch">Don't take our word for it</h1>
+      <h1 class="subtitle is-size-5 is-size-5-touch">Trusted by great people</h1>
+
+      <div class="columns">
+        <div class="column has-text-centered"><img
+            src="https://discordbots.org/api/widget/servers/579415199979798539.svg?noavatar=true&leftcolor=ffffff&rightcolor=38005b&lefttextcolor=1a1718&righttextcolor=ffffff"
+            alt="Server Counter">
+        </div>
+        <div class="column has-text-centered"><img
+            src="https://discordbots.org/api/widget/upvotes/579415199979798539.svg?noavatar=true&leftcolor=ffffff&rightcolor=38005b&lefttextcolor=1a1718&righttextcolor=ffffff"
+            alt="Server Counter">
+        </div>
+        <div class="column has-text-centered"><img
+            src="https://discordbots.org/api/widget/status/579415199979798539.svg?noavatar=true&leftcolor=ffffff&rightcolor=38005b&lefttextcolor=1a1718&righttextcolor=ffffff"
+            alt="Server Counter">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero is-dark is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-2 is-size-2-touch">See it in action</h1>
+      <div class="columns is-vcentered">
+        <div class="column">
+          <img src="../../assets/1IuK6hjfwm.gif" style="border-radius: 6px;">
+        </div>
+        <div class="column">
+          <div class="box">
+            <h1 class="title is-size-4 is-size-4-touch">Campfire is built, for you</h1>
+            <div class="content">
+              <p>
+                When we built Campfire, we built it around the sole idea of simplicity and getting things done.
+              </p>
+              <p>
+                Today, this ideaology is still heavily present throughout all of our products, as we continue our
+                mission to build the greatest Discord bot, for you.
+              </p>
+              <p>
+                We not only built Campfire for ease, but we built it with you (the user) in mind. That's why we pioneer
+                to make everything controllable via our web dashboard.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero is-dark is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-2 is-size-2-touch">Always online</h1>
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="box cf-displayInfo has-text-centered content">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/AWS.png?alt=media&token=332be37e-848f-46f8-848a-aa7f06c9225e"
+              alt="Amazon Web Services" width="40%">
+            <h1 class="title is-size-5 is-size-5-touch">Hosted on Amazon Servers</h1>
+            <p>Campfire is hosted on fast and premium cloud computing services, powered by AWS. This means that we have
+              almost 100% uptime. We make sure the bot stays online, so you can have peace of mind knowing that it
+              always will be!</p>
+            <p>What's more? We have backup servers from Digital Ocean and Google Cloud in case anything goes wrong.</p>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="box cf-displayInfo has-text-centered content">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/Node.png?alt=media&token=b874337c-e10f-48cc-b3c1-15b9a080bd3e"
+              alt="Node.js" width="40%">
+            <h1 class="title is-size-5 is-size-5-touch">Built with Node</h1>
+            <p>Campfire is built with <a href="https://discord.js.org" target="_blank">Discord.js</a> for the best user
+              experience and is powered by Chromium's V8 engine via Node.js.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero is-dark">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-size-3 is-size-3-touch">Lighten up your community with Campfire</h1>
+      <a href="https://campfirebot.xyz/links/invite" target="_blank"
+        class="button is-rounded is-outlined is-light">Invite Campfire</a>
+    </div>
+  </div>
+</div>
+
+<div class="hero is-dark">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p>© Campfire 2020 - All Rights Reserved</p>
+      <p class="is-size-7">The AWS (Amazon Web Services) logo are trademarks of AWS, registered in the U.S. and other
+        countries</p>
+      <p class="is-size-7">Created with <i class="twa twa-yellow_heart"></i> by Sam.</p>
+      <p class="is-size-7">All data stored within United States of America</p>
+      <p class="is-size-7"><a href="http://resourcing.campfirebot.xyz/legal/Privacy+Policy.pdf">Privacy Policy</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal animated fadeInUp" [class.is-active]="sparkBill">
+  <div class="modal-background" (click)="closeSpark()"></div>
+  <div class="modal-content">
+    <div class="box">
+      <h1 class="title is-size-3">Spark</h1>
+      <h1 class="subtitle is-size-6">By donating to Campfire, you support its development. In return we give you perks!
+      </h1>
+      <app-checkout amount="250" description="Spark Plan"></app-checkout>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="closeSpark()"></button>
+</div>
+
+<div class="modal animated fadeInUp" [class.is-active]="infernoBill">
+  <div class="modal-background" (click)="closeInferno()"></div>
+  <div class="modal-content">
+    <div class="box">
+      <h1 class="title is-size-3">Inferno</h1>
+      <h1 class="subtitle is-size-6">By donating to Campfire, you support its development. In return we give you perks!
+      </h1>
+      <app-checkout amount="500" description="Inferno Plan"></app-checkout>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="closeInferno()"></button>
+</div>

@@ -1,0 +1,108 @@
+.cf-fire-bg {
+  background-image: url(../../assets/Splash-1.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cf-shadow-bg {
+  background: url(../../assets/bg-stars-rolling-hills.svg), url(../../assets/bg-splash.svg);
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
+.cf-bg {
+  height: 80vh;
+  width: 60%;
+  background: url(../../assets/hero-bg-splash-2020-dark.svg);
+  background-position: right;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 10px;
+  bottom: 50px;
+}
+
+.cf-circular-pfp {
+  background: white;
+  border-radius: 100%;
+  width: 300px;
+}
+
+.cf-eight {
+  font-weight: 800;
+}
+
+.nomarg {
+  margin: 0;
+}
+
+.is-quite-big {
+  font-size: 8rem;
+}
+
+hr.thin {
+  height: 1px;
+  width: 10%;
+  margin: auto;
+}
+
+hr.justthin {
+  height: 1px;
+  width: 80%;
+  margin: 50px auto;
+}
+
+hr.lighter {
+  background-color: #bbbbbb;
+}
+
+
+.cf-displayInfo {
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+
+.cf-displayInfo img {
+  margin: auto;
+}
+
+.cf-economy-box {
+  background: linear-gradient(90deg, rgba(151, 89, 153, 0.513) 0%, rgba(89, 133, 153, 0.376) 100%), url(../../assets/svg-savings.svg) #824485;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  min-height: 200px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+}
+
+.cf-moderator-box {
+  background: linear-gradient(90deg, rgba(89, 153, 132, 0.918) 0%, rgba(195, 179, 33, 0.719) 100%), url(../../assets/svg-moderator.svg) #7c3080;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  min-height: 200px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+}
+
+.cf-bg-primary-dark {
+  background: linear-gradient(90deg, rgba(223, 28, 109, 0.431) 0%, rgba(238, 119, 7, 0.418) 100%), url(../../assets/svg-fun.svg) #452745;
+  background-size: cover;
+  background-position: top;
+  color: white;
+  min-height: 200px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+}
+
+.is-patreon {
+  margin-top: 5px;
+  border-color: #fd6854;
+  background-color: transparent;
+  color: #fd6854;
+}
+
+.is-patreon:hover {
+  background-color: #fd6854;
+  color: #5d1d14;
+}
