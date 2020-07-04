@@ -1,0 +1,316 @@
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-4">{{ greeting }}!</h1>
+      <h1 class="subtitle is-size-5">Here you can manage and view everything {{ groupName }} at a glance.</h1>
+    </div>
+  </div>
+</section>
+
+<div class="box cta has-text-centered has-background-light" *ngIf="ctaVisible">
+  <p class="has-text-weight-bold">{{ cta }}</p>
+</div>
+
+<div class="spacer"></div>
+<div class="container">
+  <img src="../../../assets/spinner.svg" *ngIf="loading" alt="Loading" width="100px"
+    style="margin: auto; display: block;">
+  <p *ngIf="loading" class="has-text-centered">Just a quickie</p>
+  <div class="spacer"></div>
+  <div class="columns" [class.is-hidden]="loading">
+    <div class="column is-2">
+      <div class="box">
+        <img src="https://www.roblox.com/headshot-thumbnail/image?userId={{robloxId}}&width=100&height=100&format=png"
+          alt="" width="100px" class="is-rounded"
+          style="margin-top: -70px; margin-left: -30px; box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1); margin-bottom: 10px;">
+        <h1 class="title is-size-5">Welcome to Presence!</h1>
+        <a class="button is-fullwidth is-link" (click)="openTimeOff()"><i class="fas fa-user-clock"></i> Request time
+          off</a>
+      </div>
+      <div class="list">
+        <a href="https://www.roblox.com/my/groupadmin.aspx?gid={{id}}" target="_blank" class="list-item">
+          <i class="fas fa-cogs"></i>
+          Group Admin</a>
+        <a href="{{handbookLink}}" target="_blank" class="list-item">
+          <i class="fas fa-book-open"></i>
+          Handbook</a>
+        <a href="{{discordLink}}" target="_blank" class="list-item">
+          <i class="fab fa-discord"></i>
+          Discord</a>
+        <a routerLink="manage" *ngIf="isMod" class="list-item">
+          <i class="fas fa-user-shield"></i>
+          Manager</a>
+      </div>
+
+      <div class="box">
+        <h1 class="title is-size-5" style="margin-bottom: 5px;">Celebrations</h1>
+        <hr>
+        <img src="https://www.roblox.com/headshot-thumbnail/image?userId={{robloxId}}&width=100&height=100&format=png"
+          alt="" width="30px" class="is-rounded">
+        <p>Eythereal's Birthday</p>
+        <hr>
+      </div>
+    </div>
+    <div class="column is-10">
+      <h1 class="title is-size-4">Overview</h1>
+      <h1 class="subtitle is-size-5 has-text-lighter-has-text-grey-light">Showing tokens since the beginning of time
+      </h1>
+      <hr class="darker">
+
+      <div class="columns">
+        <div class="column has-text-centered">
+          <canvas id="sessionTimes"></canvas>
+          <br>
+          <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">Sessions attended
+          </h1>
+          <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Times</h1>
+        </div>
+        <div class="column has-text-centered">
+          <canvas id="sessionTypes"></canvas>
+          <br>
+          <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">Sessions attended
+          </h1>
+          <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Type</h1>
+        </div>
+        <div class="column has-text-centered">
+          <canvas id="sessionDays"></canvas>
+          <br>
+          <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">Sessions attended
+          </h1>
+          <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Days</h1>
+        </div>
+      </div>
+
+      <hr class="darker">
+      <div class="columns">
+        <div class="column">
+          <div class="box has-text-centered">
+            <p class="is-size-5">Tokens</p>
+            <p class="is-size-4">{{ tokens }}</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box has-text-centered">
+            <p class="is-size-5">Activity</p>
+            <p class="is-size-4">{{ activity }}<small>/3</small></p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box has-text-centered">
+            <p class="is-size-5">Warnings</p>
+            <p class="is-size-4">{{ warnings }}<small>/{{ warningsAllowed }}</small></p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box has-text-centered">
+            <p class="is-size-5">Attended</p>
+            <p class="is-size-4">{{ attended }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <h1 class="title is-size-5">Tokens</h1>
+            <div class="content" *ngIf="tokensForPromos">
+              <p>
+                {{ groupName }} uses tokens for its promotions. But what actually are tokens? Tokens are a math based
+                staff payment system that is very versatile and are earn via attending sessions. The amount you get paid
+                never changes, the only thing that changes is the amount you need to get promoted.
+              </p>
+              <p *ngIf="magicTokens">Tokens at {{ groupName }} are managed by Campfire's Smart AI. This means that
+                promotions are earned at
+                a fair amount, every time.</p>
+              <p *ngIf="magicTokens">Because of this, prices can change frequently, so it's advised you don't attempt to
+                remember the
+                prices. Furthermore, prices can change at any time and work on a first-come-first-served basis, if
+                soemone else gets promoted before you, the prices will change.</p>
+              <p *ngIf="!magicTokens">Tokens at {{ groupName }} are managed by the staff team of {{ groupName }}.</p>
+            </div>
+
+            <div class="content" *ngIf="!tokensForPromos">
+              <p>
+                {{ groupName }} uses tokens to keep track of staff activity. You can read more about how {{ groupName }}
+                uses MaraTokens below.
+              </p>
+              <div class="box">
+                <p>{{ messageOnTokens }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <h1 class="title is-size-5">Performance</h1>
+
+            <canvas id="inactivity"></canvas>
+            <br>
+            <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light has-text-centered">
+              {{ inactiveType }}ly
+            </h1>
+            <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4 has-text-centered">Inactive</h1>
+
+            <hr class="darker">
+
+            <h1 class="title is-size-5">This week</h1>
+            <div class="box">
+              <h1 class="title is size-4 has-text-centered">{{ sessionsWeek }}</h1>
+              <h1 class="subtitle is size-5 has-text-centered">Sessions attended this week</h1>
+            </div>
+
+            <div class="box">
+              <h1 class="title is size-4 has-text-centered">{{ tokensWeek }}</h1>
+              <h1 class="subtitle is size-5 has-text-centered">Tokens this week</h1>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box">
+            <h1 class="title is-size-5">Latest Transactions</h1>
+            <div *ngFor="let transaction of transactionLog; let i=index">
+              <div *ngIf="i<5">
+                <p>{{ transaction }}</p>
+                <hr class="darker" *ngIf="i<4">
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <h1 class="title is-size-5">Warnings and infractions</h1>
+            <p *ngIf="warnings < 1">You have no warnings or infractions</p>
+
+            <div *ngIf="warnings >= 1">
+              <hr>
+              <h1 class="title is-size-5">Warning 1</h1>
+              <h1 class="subtitle is-size-6">Issued by: {{ warning1?.issuer }} | {{ momentWarning1 }}</h1>
+              <p>{{ warning1?.reason }}</p>
+              <hr>
+            </div>
+
+            <div *ngIf="warnings >= 2">
+              <hr>
+              <h1 class="title is-size-5">Warning 2</h1>
+              <h1 class="subtitle is-size-6">Issued by: {{ warning2?.issuer }} | {{ momentWarning2 }}</h1>
+              <p>{{ warning2?.reason }}</p>
+              <hr>
+            </div>
+
+            <div *ngIf="warnings >= 3">
+              <hr>
+              <h1 class="title is-size-5">Warning 3</h1>
+              <h1 class="subtitle is-size-6">Issued by: {{ warning3?.issuer }} | {{ momentWarning3 }}</h1>
+              <p>{{ warning3?.reason }}</p>
+              <hr>
+            </div>
+
+            <div *ngIf="warnings >= 4">
+              <hr>
+              <h1 class="title is-size-5">Warning 4</h1>
+              <h1 class="subtitle is-size-6">Issued by: {{ warning4?.issuer }} | {{ momentWarning4 }}</h1>
+              <p>{{ warning4?.reason }}</p>
+              <hr>
+            </div>
+
+            <div *ngIf="warnings === 5">
+              <hr>
+              <h1 class="title is-size-5">Warning 5</h1>
+              <h1 class="subtitle is-size-6">Issued by: {{ warning5?.issuer }} | {{ momentWarning5 }}</h1>
+              <p>{{ warning5?.reason }}</p>
+              <hr>
+            </div>
+          </div>
+
+          <div class="box">
+            <h1 class="title is-size-5">Overall team performance</h1>
+            <canvas id="staffPerformance"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" [class.is-active]="timeOffFormVisible">
+    <div class="modal-background animated fadeIn" (click)="closeTimeOff()"></div>
+    <div class="modal-card animated fadeInUp">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Request time off</p>
+        <button class="delete" aria-label="close" (click)="closeTimeOff()"></button>
+      </header>
+      <section class="modal-card-body">
+        <form (ngSubmit)="inactivityForm(inactivityFormData)" #inactivityFormData="ngForm">
+          <div class="field">
+            <label class="label">Time off type</label>
+            <div class="dropdown" [class.is-active]="timeoffDropped">
+              <div class="dropdown-trigger">
+                <a class="button" aria-haspopup="true" aria-controls="dropdown-menu" (click)="toggleTimeoff()">
+                  <span *ngIf="!ddSelected">Select type</span>
+                  <span *ngIf="ddSelected">{{ ddSelection }}</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <a (click)="ddSelect('Holiday/Vacation')" [class.is-active]="ddSelection === 'Holiday/Vacation'"
+                    class="dropdown-item">
+                    Holiday/Vacation
+                  </a>
+                  <a (click)="ddSelect('Funeral')" [class.is-active]="ddSelection === 'Funeral'" class="dropdown-item">
+                    Funeral
+                  </a>
+                  <a (click)="ddSelect('Medical')" [class.is-active]="ddSelection === 'Medical'" class="dropdown-item">
+                    Medical
+                  </a>
+                  <a (click)="ddSelect('Education')" [class.is-active]="ddSelection === 'Education'"
+                    class="dropdown-item">
+                    Education
+                  </a>
+                  <a (click)="ddSelect('Issues with Family/Personal')"
+                    [class.is-active]="ddSelection === 'Issues with Family/Personal'" class="dropdown-item">
+                    Issues with Family/Personal
+                  </a>
+                  <a (click)="ddSelect('Device/Hardware Related Issues')"
+                    [class.is-active]="ddSelection === 'Device/Hardware Related Issues'" class="dropdown-item">
+                    Device/Hardware Related Issues
+                  </a>
+                  <a (click)="ddSelect('Prefer Not to Say')" [class.is-active]="ddSelection === 'Prefer Not to Say'"
+                    class="dropdown-item">
+                    Prefer Not to Say
+                  </a>
+                  <hr class="dropdown-divider">
+                  <a (click)="ddSelect('Other')" [class.is-active]="ddSelection === 'Other'" class="dropdown-item">
+                    Other
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Start Date</label>
+            <input type="date" required ngModel class="input" name="start" min="{{ todayDatePick }}">
+          </div>
+
+          <div class="field">
+            <label class="label">End Date</label>
+            <input type="date" required ngModel class="input" name="end" min="{{ todayDatePick }}">
+          </div>
+
+          <p>You've used {{ inactiveDaysOff }} inactive days out of {{ maxGroupInactivityDays }} this {{ inactiveType }}
+          </p>
+
+          <div class="field">
+            <label class="label">Note</label>
+            <textarea class="textarea" ngModel required minlength="1" name="note"></textarea>
+          </div>
+          <div class="buttons">
+            <button class="button is-success" [disabled]="!ddSelected || !inactivityFormData.form.valid" type="submit"
+              [class.is-loading]="loadingInactivityPush">Save
+              changes</button>
+            <button class="button" (click)="toggleTimeoff()">Cancel</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
